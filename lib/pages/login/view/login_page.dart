@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/pages/dash_boar/view/dash_boar.dart';
-import 'package:shop_app/pages/login/modules/forgot_password.dart';
+import 'package:shop_app/pages/forgot_password/view/forgot_password.dart';
 import 'package:shop_app/pages/register/view/register_page.dart';
-import 'package:shop_app/widgets/form_text_fiels.dart';
-import 'package:shop_app/widgets/form_text_fiels_password.dart';
+import 'package:shop_app/widgets/buttons/button.dart';
+import 'package:shop_app/widgets/form_text/form_text_fiels.dart';
+import 'package:shop_app/widgets/form_text/form_text_fiels_password.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -56,11 +57,15 @@ class _LoginPageState extends State<LoginPage> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   FormTextFiels(
+                    colorIcon: Colors.white,
+                    colorText: Colors.white,
+                    colorHint: Colors.white,
                     controller: emailController,
                     text: "Email",
                     icon: Icons.email,
                   ),
                   FormTextFielsPassword(
+                    colorHinttext: Colors.white,
                     text: "Password",
                     passwordController: passwordController,
                   ),
@@ -93,29 +98,7 @@ class _LoginPageState extends State<LoginPage> {
                   SizedBox(
                     height: size.height * 0.1,
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                        color: Colors.blueAccent.withOpacity(0.5),
-                        borderRadius: BorderRadius.circular(10)),
-                    height: 60,
-                    width: size.width * 0.8,
-                    child: TextButton(
-                      style: TextButton.styleFrom(
-                        padding: const EdgeInsets.all(16.0),
-                        primary: Colors.white,
-                        textStyle: const TextStyle(fontSize: 20),
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const DashBoarPage(),
-                          ),
-                        );
-                      },
-                      child: const Text('Login'),
-                    ),
-                  ),
+                  const FloatButton(text: "Login"),
                   SizedBox(
                     height: size.height * 0.12,
                   ),

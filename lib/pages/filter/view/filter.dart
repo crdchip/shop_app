@@ -26,12 +26,7 @@ class _FilterState extends State<Filter> {
               color: Colors.black.withOpacity(0.7),
             ),
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const DashBoarPage(),
-                ),
-              );
+              Navigator.pop(context);
             },
           ),
           title: Text(
@@ -63,7 +58,9 @@ class _FilterState extends State<Filter> {
                 children: [
                   SelectCategory(size: size),
                   Distance(size: size),
-                  RatingStar(size: size)
+                  RatingStar(
+                    size: size,
+                  )
                 ],
               ),
             ),

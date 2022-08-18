@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/pages/login/view/login_page.dart';
-import 'package:shop_app/widgets/form_text_fiels.dart';
-import 'package:shop_app/widgets/form_text_fiels_password.dart';
+import 'package:shop_app/widgets/buttons/button.dart';
+import 'package:shop_app/widgets/form_text/form_text_fiels.dart';
+import 'package:shop_app/widgets/form_text/form_text_fiels_password.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -69,39 +70,32 @@ class _RegisterPageState extends State<RegisterPage> {
               text: "Name",
               icon: Icons.person,
               controller: nameController,
+              colorIcon: Colors.white,
+              colorText: Colors.white,
+              colorHint: Colors.white,
             ),
             FormTextFiels(
+              colorIcon: Colors.white,
+              colorText: Colors.white,
+              colorHint: Colors.white,
               text: "Email",
               icon: Icons.email_outlined,
               controller: emailController,
             ),
             FormTextFielsPassword(
+              colorHinttext: Colors.white,
               passwordController: passController,
               text: "Password",
             ),
             FormTextFielsPassword(
+              colorHinttext: Colors.white,
               text: "Confirm Password",
               passwordController: repassController,
             ),
             SizedBox(
               height: size.height * 0.1,
             ),
-            Container(
-              decoration: BoxDecoration(
-                  color: Colors.blueAccent.withOpacity(0.8),
-                  borderRadius: BorderRadius.circular(10)),
-              height: 60,
-              width: size.width * 0.8,
-              child: TextButton(
-                style: TextButton.styleFrom(
-                  padding: const EdgeInsets.all(16.0),
-                  primary: Colors.white,
-                  textStyle: const TextStyle(fontSize: 20),
-                ),
-                onPressed: () {},
-                child: const Text('Register'),
-              ),
-            ),
+            const FloatButton(text: "Register"),
             SizedBox(
               height: size.height * 0.1,
             ),

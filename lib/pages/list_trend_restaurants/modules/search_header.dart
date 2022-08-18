@@ -10,7 +10,7 @@ class SearchHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Positioned(
       child: Container(
-        margin: EdgeInsets.only(top: 20),
+        margin: const EdgeInsets.only(top: 20),
         height: 50,
         child: TextField(
           textAlign: TextAlign.start,
@@ -26,7 +26,7 @@ class SearchHeader extends StatelessWidget {
               CupertinoIcons.search,
               color: Colors.black.withOpacity(0.4),
             ),
-            border: OutlineInputBorder(),
+            border: const OutlineInputBorder(),
             hintText: "Find Restaurants",
           ),
         ),

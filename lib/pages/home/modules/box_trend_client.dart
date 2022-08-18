@@ -49,7 +49,7 @@ class BoxTrendClient extends StatelessWidget {
                           backgroundColor: Colors.white,
                         ),
                         onPressed: () {},
-                        child: Text("$text"),
+                        child: Text(text),
                       ),
                     ),
                     Positioned(

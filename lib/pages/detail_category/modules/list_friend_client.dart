@@ -15,7 +15,7 @@ class ListFriendClient extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(
-            height: size.height * 0.075,
+            height: size.height * 0.035,
             child: ListTile(
               leading: const Text(
                 "Review & Ratings",
@@ -37,6 +37,7 @@ class ListFriendClient extends StatelessWidget {
             height: size.height * 0.42,
             width: size.width,
             child: ListView.builder(
+              physics: NeverScrollableScrollPhysics(),
               scrollDirection: Axis.vertical,
               itemBuilder: (context, index) {
                 return ListTile(

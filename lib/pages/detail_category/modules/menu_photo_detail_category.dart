@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/pages/menu_photo/view/list_menu_photo.dart';
 
 class MenuPhotoDetail extends StatelessWidget {
   const MenuPhotoDetail({
@@ -25,10 +26,20 @@ class MenuPhotoDetail extends StatelessWidget {
                 ),
                 textDirection: TextDirection.ltr,
               ),
-              trailing: Text(
-                "See all (22)",
-                style: TextStyle(
-                  color: Colors.blueAccent.withOpacity(0.5),
+              trailing: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ListMenuPhotos(),
+                    ),
+                  );
+                },
+                child: Text(
+                  "See all (22)",
+                  style: TextStyle(
+                    color: Colors.blueAccent.withOpacity(0.5),
+                  ),
                 ),
               ),
             ),

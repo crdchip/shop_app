@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/widgets/form_text_fiels.dart';
+import 'package:shop_app/widgets/buttons/button.dart';
+import 'package:shop_app/widgets/form_text/form_text_fiels.dart';
 
 // ignore: must_be_immutable
 class ForgotPassword extends StatelessWidget {
@@ -44,6 +45,9 @@ class ForgotPassword extends StatelessWidget {
                     height: 20,
                   ),
                   FormTextFiels(
+                    colorIcon: Colors.white,
+                    colorText: Colors.white,
+                    colorHint: Colors.white,
                     text: "Email",
                     icon: Icons.email_outlined,
                     controller: emailController,
@@ -51,22 +55,7 @@ class ForgotPassword extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              decoration: BoxDecoration(
-                  color: Colors.blueAccent.withOpacity(0.5),
-                  borderRadius: BorderRadius.circular(10)),
-              height: 60,
-              width: size.width * 0.8,
-              child: TextButton(
-                style: TextButton.styleFrom(
-                  padding: const EdgeInsets.all(16.0),
-                  primary: Colors.white,
-                  textStyle: const TextStyle(fontSize: 20),
-                ),
-                onPressed: () {},
-                child: const Text('Send'),
-              ),
-            ),
+            const FloatButton(text: "Send"),
           ],
         ),
       ),

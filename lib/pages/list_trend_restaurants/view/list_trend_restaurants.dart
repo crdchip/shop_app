@@ -1,9 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:shop_app/pages/dash_boar/view/dash_boar.dart';
 import 'package:shop_app/pages/home/modules/box_trend_client.dart';
 import 'package:shop_app/pages/list_trend_restaurants/modules/search_header.dart';
-import 'package:shop_app/widgets/form_header_nav_bar.dart';
 
 class ListTrendRestaurants extends StatefulWidget {
   const ListTrendRestaurants({Key? key}) : super(key: key);
@@ -13,6 +10,13 @@ class ListTrendRestaurants extends StatefulWidget {
 }
 
 class _ListTrendRestaurantsState extends State<ListTrendRestaurants> {
+  @override
+  void initState() {
+    super.initState();
+    // ignore: avoid_print
+    print("Trend Restaurent");
+  }
+
   bool status = false;
   @override
   Widget build(BuildContext context) {
@@ -27,12 +31,7 @@ class _ListTrendRestaurantsState extends State<ListTrendRestaurants> {
             color: Colors.black,
           ),
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const DashBoarPage(),
-              ),
-            );
+            Navigator.pop(context);
           },
         ),
         title: const Text(
@@ -92,7 +91,7 @@ class _ListTrendRestaurantsState extends State<ListTrendRestaurants> {
                 ),
               ),
             ),
-            SearchHeader(),
+            const SearchHeader(),
           ],
         ),
       ),

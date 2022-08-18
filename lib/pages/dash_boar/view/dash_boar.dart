@@ -1,7 +1,14 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shop_app/pages/home/view/home_page.dart';
+import 'package:shop_app/pages/my_favourite/view/my_favourite.dart';
+import 'package:shop_app/pages/new_review/view/new_review.dart';
+import 'package:shop_app/pages/notifications/view/notifications.dart';
 import 'package:shop_app/pages/profiles/views/profile_page.dart';
+import 'package:shop_app/res/assets.dart';
 
 class DashBoarPage extends StatefulWidget {
   const DashBoarPage({Key? key}) : super(key: key);
@@ -11,61 +18,142 @@ class DashBoarPage extends StatefulWidget {
 }
 
 class _DashBoarPageState extends State<DashBoarPage> {
-  int currentIndex = 0;
-  // ignore: non_constant_identifier_names
-  final Sreen = [
-    const HomePage(),
-    const Center(
-      child: Text("Favoutive"),
-    ),
-    const Center(
-      child: Text("Create Images"),
-    ),
-    const Center(
-      child: Text("Notifications"),
-    ),
+  int currentTab = 0;
+  bool isFloatbutton = false;
+  final List<Widget> screens = [
+    HomePage(),
+    MyFavouritePage(),
+    NewReviewPage(),
+    NotificationsPage(),
     ProfilePage(),
   ];
+  final PageStorageBucket bucket = PageStorageBucket();
+  Widget currentScreen = HomePage();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Sreen[currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        onTap: (index) {
+      body: PageStorage(
+        bucket: bucket,
+        child: currentScreen,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
           setState(() {
-            currentIndex = index;
+            isFloatbutton = !isFloatbutton;
+            isFloatbutton
+                ? currentScreen = NewReviewPage()
+                : currentScreen = HomePage();
+            currentTab = 2;
           });
         },
-        currentIndex: currentIndex,
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.white,
-        selectedItemColor: Colors.blueAccent,
-        unselectedItemColor: Colors.black.withOpacity(0.4),
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        iconSize: 32,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_max),
-            label: "Home",
+        child: isFloatbutton ? Icon(Icons.clear) : Icon(Icons.add),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomAppBar(
+        shape: CircularNotchedRectangle(),
+        notchMargin: 10,
+        child: Container(
+          height: 60,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  MaterialButton(
+                    onPressed: () {
+                      setState(() {
+                        currentScreen = HomePage();
+                        currentTab = 0;
+                      });
+                    },
+                    minWidth: 40,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.dashboard,
+                          color:
+                              currentTab == 0 ? Colors.blueAccent : Colors.grey,
+                        ),
+                      ],
+                    ),
+                  ),
+                  MaterialButton(
+                    onPressed: () {
+                      setState(() {
+                        currentScreen = MyFavouritePage();
+                        currentTab = 1;
+                      });
+                    },
+                    minWidth: 40,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.chat,
+                          color:
+                              currentTab == 1 ? Colors.blueAccent : Colors.grey,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      MaterialButton(
+                        onPressed: () {
+                          setState(() {
+                            currentScreen = NotificationsPage();
+                            currentTab = 3;
+                          });
+                        },
+                        minWidth: 40,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.person,
+                              color: currentTab == 3
+                                  ? Colors.blueAccent
+                                  : Colors.grey,
+                            ),
+                          ],
+                        ),
+                      ),
+                      MaterialButton(
+                        onPressed: () {
+                          setState(() {
+                            currentScreen = ProfilePage();
+                            currentTab = 4;
+                          });
+                        },
+                        minWidth: 40,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.settings,
+                              color: currentTab == 4
+                                  ? Colors.blueAccent
+                                  : Colors.grey,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              )
+            ],
           ),
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.bookmark),
-            label: "Favoutive",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.add_circled),
-            label: "",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.bell),
-            label: "Notifications",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.person),
-            label: "Profile",
-          ),
-        ],
+        ),
       ),
     );
   }

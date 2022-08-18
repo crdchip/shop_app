@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/pages/category/view/category.dart';
 
 class BoxCategory extends StatelessWidget {
   const BoxCategory({
@@ -25,10 +26,19 @@ class BoxCategory extends StatelessWidget {
                 ),
                 textDirection: TextDirection.ltr,
               ),
-              trailing: Text(
-                "See all (9)",
-                style: TextStyle(
-                  color: Colors.blueAccent.withOpacity(0.5),
+              trailing: InkWell(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const Category(),
+                      ));
+                },
+                child: Text(
+                  "See all (9)",
+                  style: TextStyle(
+                    color: Colors.blueAccent.withOpacity(0.5),
+                  ),
                 ),
               ),
             ),

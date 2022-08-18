@@ -3,12 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:shop_app/pages/dash_boar/view/dash_boar.dart';
 
 class HeaderNavBar extends StatelessWidget {
-  const HeaderNavBar({
+  HeaderNavBar({
     Key? key,
     required this.size,
+    required this.onTap,
+    required this.icon, required this.color,
   }) : super(key: key);
 
   final Size size;
+  final VoidCallback onTap;
+  final IconData icon;
+  final Color color;
+  bool isLike = false;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +24,7 @@ class HeaderNavBar extends StatelessWidget {
         padding: const EdgeInsets.only(
           top: 0,
         ),
-        child: Container(
+        child: SizedBox(
           height: 60,
           width: size.width,
           child: Padding(
@@ -33,16 +39,11 @@ class HeaderNavBar extends StatelessWidget {
                   icon: const Icon(Icons.arrow_back_ios_rounded),
                   color: Colors.black,
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const DashBoarPage(),
-                      ),
-                    );
+                    Navigator.pop(context);
                   },
                 ),
                 Row(
-                  children: const [
+                  children: [
                     Icon(
                       Icons.device_hub,
                       color: Colors.black,
@@ -50,9 +51,12 @@ class HeaderNavBar extends StatelessWidget {
                     SizedBox(
                       width: 15,
                     ),
-                    Icon(
-                      CupertinoIcons.bookmark,
-                      color: Colors.black,
+                    InkWell(
+                      onTap: onTap,
+                      child: Icon(
+                        icon,
+                        color: color,
+                      ),
                     ),
                   ],
                 )

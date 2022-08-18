@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/pages/find_friend/view/find_friend.dart';
 
 class BoxFriends extends StatelessWidget {
   const BoxFriends({
@@ -25,10 +26,20 @@ class BoxFriends extends StatelessWidget {
                 ),
                 textDirection: TextDirection.ltr,
               ),
-              trailing: Text(
-                "See all (56)",
-                style: TextStyle(
-                  color: Colors.blueAccent.withOpacity(0.5),
+              trailing: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const FindFriendPage(),
+                    ),
+                  );
+                },
+                child: Text(
+                  "See all (56)",
+                  style: TextStyle(
+                    color: Colors.blueAccent.withOpacity(0.5),
+                  ),
                 ),
               ),
             ),

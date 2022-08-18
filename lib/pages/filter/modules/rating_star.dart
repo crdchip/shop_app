@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shop_app/widgets/ratings_star.dart';
 
 class RatingStar extends StatelessWidget {
   const RatingStar({
@@ -12,7 +12,7 @@ class RatingStar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: size.height * 0.2,
+      height: size.height * 0.3,
       child: Column(
         children: [
           SizedBox(
@@ -27,56 +27,7 @@ class RatingStar extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(
-            height: 30,
-          ),
-          SizedBox(
-            height: size.height * 0.1,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 35,
-              ),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.1),
-                  borderRadius: BorderRadius.circular(30),
-                  border: Border.all(
-                    color: Colors.grey.withOpacity(0.2),
-                  ),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: const [
-                    Icon(
-                      CupertinoIcons.star_fill,
-                      color: Colors.yellowAccent,
-                      size: 34,
-                    ),
-                    Icon(
-                      CupertinoIcons.star_fill,
-                      color: Colors.yellowAccent,
-                      size: 34,
-                    ),
-                    Icon(
-                      CupertinoIcons.star_fill,
-                      color: Colors.yellowAccent,
-                      size: 34,
-                    ),
-                    Icon(
-                      CupertinoIcons.star_fill,
-                      color: Colors.yellowAccent,
-                      size: 34,
-                    ),
-                    Icon(
-                      CupertinoIcons.star_fill,
-                      color: Colors.grey,
-                      size: 34,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          )
+          const RatingsStar()
         ],
       ),
     );

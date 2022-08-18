@@ -6,10 +6,12 @@ class FormTextFielsPassword extends StatefulWidget {
     Key? key,
     required this.passwordController,
     required this.text,
+    required this.colorHinttext,
   }) : super(key: key);
 
   final TextEditingController passwordController;
   final String text;
+  final Color colorHinttext;
   @override
   State<FormTextFielsPassword> createState() => _FormTextFielsPasswordState();
 }
@@ -27,11 +29,11 @@ class _FormTextFielsPasswordState extends State<FormTextFielsPassword> {
           border: InputBorder.none,
           icon: Icon(
             Icons.lock_outline,
-            color: Colors.grey[300],
+            color: Colors.blueAccent.withOpacity(0.4),
           ),
           hintText: widget.text,
-          hintStyle: const TextStyle(
-            color: Colors.white,
+          hintStyle: TextStyle(
+            color: widget.colorHinttext,
             fontStyle: FontStyle.italic,
           ),
           suffixIcon: IconButton(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/pages/register/view/register_page.dart';
+import 'package:shop_app/widgets/buttons/button.dart';
 
 class GPSPage extends StatefulWidget {
   const GPSPage({Key? key}) : super(key: key);
@@ -75,22 +76,7 @@ class _GPSPageState extends State<GPSPage> {
                   SizedBox(
                     height: size.height * 0.17,
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                        color: Colors.blueAccent.withOpacity(0.8),
-                        borderRadius: BorderRadius.circular(10)),
-                    height: 50,
-                    width: size.width * 0.8,
-                    child: TextButton(
-                      style: TextButton.styleFrom(
-                        padding: const EdgeInsets.all(16.0),
-                        primary: Colors.white,
-                        textStyle: const TextStyle(fontSize: 18),
-                      ),
-                      onPressed: () {},
-                      child: const Text('Turn On GPS'),
-                    ),
-                  ),
+                  const FloatButton(text: "Turn On GPS"),
                   const SizedBox(
                     height: 10,
                   )
